@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <p>This add-in will insert the text 'Hello world! - My name is Johnathon' in a new message.</p>
+    <p>This add-in will insert the text 'Hello world!' in a new message.</p>
     <button id="helloButton">Say hello</button>
 
     <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
@@ -16,7 +16,6 @@
 </body>
 
 <script>
-
     Office.onReady((info) => {
         if (info.host === Office.HostType.Outlook) {
             document.getElementById("helloButton").onclick = sayHello;
@@ -24,7 +23,7 @@
     });
 
     /**
-     * Writes 'Hello world!' to a new message body.
+     * Writes the current number of characters in the email to a new message body.
      */
     function sayHello() {
         var emailBody = Office.context.mailbox.item.body.getAsync(
@@ -37,7 +36,7 @@
                     Office.context.mailbox.item.body.setAsync(
                         characterCount.toString(), // Insert the character count as text
                         {
-                            coercionType: "Text", // Write text as HTML
+                            coercionType: "html", // Write text as HTML
                         },
                         function (asyncResult) {
                             if (asyncResult.status === Office.AsyncResultStatus.Failed) {
@@ -49,7 +48,6 @@
             }
         );
     }
-
 </script>
 
 </html>
