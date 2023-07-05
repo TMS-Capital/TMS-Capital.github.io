@@ -17,23 +17,24 @@
 
 <script>
     Office.onReady((info) => {
-        //if (info.host === Office.HostType.Outlook) {
-        //    document.getElementById("helloButton").onclick = sayHello;
-        //}
-
-        var extensionPoint = Office.context.mailbox.diagnostics.hostName;
-
-        if (extensionPoint === "MessageCompose") {
+        if (info.host === Office.HostType.Outlook) {
             document.getElementById("helloButton").onclick = sayHello;
-        } else {
-            document.getElementById("helloButton").onclick = alert("HELLO!!");
         }
+
+        //var extensionPoint = Office.context.mailbox.diagnostics.hostName;
+
+        //if (extensionPoint === "MessageCompose") {
+        //    document.getElementById("helloButton").onclick = sayHello;
+        //} else {
+        //    document.getElementById("helloButton").onclick = alert("HELLO!!");
+        //}
     });
 
     /**
      * Writes the current number of characters in the email to a new message body.
      */
     function sayHello() {
+        var extensionPoint = Office.context.mailbox.diagnostics.hostName;
         var emailBody = Office.context.mailbox.item.body.getAsync(
             "text", // Get the email body as plain text
             function (asyncResult) {
@@ -42,7 +43,8 @@
                     var characterCount = currentText.length;
 
                     Office.context.mailbox.item.body.setAsync(
-                        characterCount.toString(), // Insert the character count as text
+                        extensionPoint.toString()
+                        // characterCount.toString(), // Insert the character count as text
                         {
                             coercionType: "html", // Write text as HTML
                         },
