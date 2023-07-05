@@ -34,7 +34,7 @@
      * Writes the current number of characters in the email to a new message body.
      */
     function sayHello() {
-        var extensionPoint = Office.context.mailbox.diagnostics.hostName;
+        var extensionPoint = Office.context.mailbox.diagnostics.hostItemType;
         var emailBody = Office.context.mailbox.item.body.getAsync(
             "text", // Get the email body as plain text
             function (asyncResult) {
