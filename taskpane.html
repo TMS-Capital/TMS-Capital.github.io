@@ -17,8 +17,16 @@
 
 <script>
     Office.onReady((info) => {
-        if (info.host === Office.HostType.Outlook) {
+        //if (info.host === Office.HostType.Outlook) {
+        //    document.getElementById("helloButton").onclick = sayHello;
+        //}
+
+        var extensionPoint = Office.context.mailbox.diagnostics.hostName;
+
+        if (extensionPoint === "MessageCompose") {
             document.getElementById("helloButton").onclick = sayHello;
+        } else if (extensionPoint === "MessageRead") {
+            document.getElementById("helloButton").onclick = alert("HELLO!!");
         }
     });
 
