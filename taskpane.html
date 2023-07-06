@@ -34,29 +34,30 @@
      * Writes the current number of characters in the email to a new message body.
      */
     function sayHello() {
-        var extensionPoint = Office.context.mailbox.diagnostics.hostItemType;
-        var emailBody = Office.context.mailbox.item.body.getAsync(
-            "text", // Get the email body as plain text
-            function (asyncResult) {
-                if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-                    var currentText = asyncResult.value;
-                    var characterCount = currentText.length;
+        Office.context.mailbox.item.displayReplyAllForm();
+        // var extensionPoint = Office.context.mailbox.diagnostics.hostName;
+        //var emailBody = Office.context.mailbox.item.body.getAsync(
+        //    "text", // Get the email body as plain text
+        //    function (asyncResult) {
+        //        if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+        //            var currentText = asyncResult.value;
+        //            var characterCount = currentText.length;
 
-                    Office.context.mailbox.item.body.setAsync(
-                        extensionPoint.toString(),
-                        // characterCount.toString(), // Insert the character count as text
-                        {
-                            coercionType: "html", // Write text as HTML
-                        },
-                        function (asyncResult) {
-                            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                                write(asyncResult.error.message);
-                            }
-                        }
-                    );
-                }
-            }
-        );
+        //            Office.context.mailbox.item.body.setAsync(
+        //                //extensionPoint.toString(),
+        //                characterCount.toString(), // Insert the character count as text
+        //                {
+        //                    coercionType: "html", // Write text as HTML
+        //                },
+        //                function (asyncResult) {
+        //                    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+        //                        write(asyncResult.error.message);
+        //                    }
+        //                }
+        //            );
+        //        }
+        //    }
+        //);
     }
 </script>
 
