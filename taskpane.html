@@ -9,7 +9,7 @@
 
 <body>
     <p>This add-in will insert the text 'Hello world2!!!' in a new message.</p>
-    <textarea id="messageText" style="resize:none; width: 100%; box-sizing: border-box;" rows="10"></textarea><br>
+    <textarea id="messageText" rows="10"></textarea><br>
     <button id="helloButton">Say hello</button>
 
     <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
@@ -25,7 +25,7 @@
 
     function sayHello() {
         var messageText = document.getElementById("messageText").value;
-        Office.context.mailbox.item.displayReplyForm("Reply", { htmlBody: messageText });
+        Office.context.mailbox.item.displayReplyForm("Reply", {htmlBody: messageText});
     }
 </script>
 
