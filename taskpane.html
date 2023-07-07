@@ -25,7 +25,7 @@
 
     function sayHello() {
         var messageText = document.getElementById("messageText").value;
-        Office.context.mailbox.item.displayReplyForm("Reply", { htmlBody: messageText });
+        Office.context.mailbox.item.displayReplyForm(messageText);
     }
 </script>
 
